@@ -19,10 +19,10 @@ public class LoginLogoutTest {
     @Test
     public void testHelloworld() {
         //封装了 创建securityManager 并绑定到securityUtils的过程
-        SecurityManagerUtil.createIniSecurityManager("classpath:conf/shiro.ini");
+        SecurityManagerUtil.createIniSecurityManager("classpath:conf/chapter2/shiro.ini");
     /*    //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
         Factory<SecurityManager> factory =
-                new IniSecurityManagerFactory("classpath:conf/shiro.ini");
+                new IniSecurityManagerFactory("classpath:conf/chapter2/shiro.ini");
 
         //2、得到SecurityManager实例 并绑定给SecurityUtils
         org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
@@ -47,7 +47,7 @@ public class LoginLogoutTest {
     @Test
     public void testCustomRealm() {
         //封装了 创建securityManager 并绑定到securityUtils的过程
-        SecurityManagerUtil.createIniSecurityManager("classpath:conf/shiro-realm.ini");
+        SecurityManagerUtil.createIniSecurityManager("classpath:conf/chapter2/shiro-realm.ini");
 
         //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
@@ -68,7 +68,7 @@ public class LoginLogoutTest {
     @Test
     public void testMultiCustomRealm() {
         //封装了 创建securityManager 并绑定到securityUtils的过程
-        SecurityManagerUtil.createIniSecurityManager("classpath:conf/shiro-multiRealm.ini");
+        SecurityManagerUtil.createIniSecurityManager("classpath:conf/chapter2/shiro-multiRealm.ini");
 
         //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
@@ -91,7 +91,7 @@ public class LoginLogoutTest {
     @Test
     public void testJDBCRealm() {
         //封装了 创建securityManager 并绑定到securityUtils的过程
-        SecurityManagerUtil.createIniSecurityManager("classpath:conf/shiro-jdbc-realm.ini");
+        SecurityManagerUtil.createIniSecurityManager("classpath:conf/chapter2/shiro-jdbc-realm.ini");
 
         //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
@@ -117,7 +117,7 @@ public class LoginLogoutTest {
     * 当账号密码通过所有的realm验证时才登陆成功
     */
     public void  testAuthenticateStrategyAllSuccessfulWithSuccess (){
-        SecurityManagerUtil.createIniSecurityManager("classpath:conf/shiro-authenticator-all-success.ini");
+        SecurityManagerUtil.createIniSecurityManager("classpath:conf/chapter2/shiro-authenticator-all-success.ini");
 
         Subject subject = SecurityUtils.getSubject();
 
@@ -138,7 +138,7 @@ public class LoginLogoutTest {
      */
     @Test
     public void  testAuthenticateStrategyAllSuccessfulWithFail (){
-        SecurityManagerUtil.createIniSecurityManager("classpath:conf/shiro-authenticator-all-fail.ini");
+        SecurityManagerUtil.createIniSecurityManager("classpath:conf/chapter2/shiro-authenticator-all-fail.ini");
 
         Subject subject = SecurityUtils.getSubject();
 
