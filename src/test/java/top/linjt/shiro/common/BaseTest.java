@@ -59,6 +59,9 @@ public class BaseTest {
         }
 
     }
+    /**
+    * 已经securityManager的配置,直接获取全局的securityManager进行登录
+    */
     public void login(String username,String password) {
 
         Subject subject = SecurityUtils.getSubject();

@@ -80,14 +80,19 @@ public class CodecAndCryptoTest {
 //        hashService.setRandomNumberGenerator(new SecureRandomNumberGenerator()); //用于生成公盐   此为默认值
 
         HashRequest request = new HashRequest.Builder()
-                .setAlgorithmName("MD5")
+                .setAlgorithmName("md5")
                 .setSalt(SALT)
+//                .setSalt("liu"+"24520ee264eab73ec09451d0e9ea6aac")
+//                .setSource("123")
                 .setSource(STR)
-                .setIterations(1)
+                .setIterations(2)
                 .build();
         System.out.println(hashService.computeHash(request).toString());
     }
 
+    /**
+    * AES 加密与解密
+    */
     @Test
     public void testAesCipherService(){
         AesCipherService aesService = new AesCipherService();
