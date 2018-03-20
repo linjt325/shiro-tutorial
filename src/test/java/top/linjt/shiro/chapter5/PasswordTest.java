@@ -68,7 +68,7 @@ public class PasswordTest extends BaseTest {
 
         login("classpath:conf/chapter5/shiro-jdbc-retryLimitted-credentialsMatcher.ini", "liu", "123");
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             login("liu", "1122");
         }
         login("liu", "1231");
