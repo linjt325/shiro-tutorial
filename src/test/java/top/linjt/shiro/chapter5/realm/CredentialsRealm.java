@@ -26,6 +26,7 @@ public class CredentialsRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String username = token.getPrincipal().toString();
+        //模拟获取指定用户的散列计算后的密码,并设置计算用的盐
         String salt2 = "24520ee264eab73ec09451d0e9ea6aac" ;
         DefaultHashService hashService = new DefaultHashService();
 //        hashService.setHashAlgorithmName("MD5");
@@ -41,6 +42,7 @@ public class CredentialsRealm extends AuthorizingRealm {
 
         //指定该验证信息的盐 否则在匹配输入的账号密码时无法进行正确的计算
         simpleAuthenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(username+salt2));
+
         return simpleAuthenticationInfo;
     }
 }

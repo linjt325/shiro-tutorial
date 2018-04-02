@@ -38,13 +38,16 @@ public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
         //获取缓存中的重试次数
         AtomicInteger retryCount = passwordRetryCache.get(username);
         if(retryCount == null){
-            retryCount=new AtomicInteger(0);
+            retryCount=new AtomicInteger(1);
             passwordRetryCache.put(username, retryCount);
+        }else{
+            //次数自增
+            if( retryCount.incrementAndGet() > 5){
+                throw new ExcessiveAttemptsException("别试了");
+            }
         }
-        //次数自增
-        if( retryCount.incrementAndGet() > 5){
-            throw new ExcessiveAttemptsException("别试了");
-        }
+
+
         boolean result = super.doCredentialsMatch(token, info);
         //登陆成功清楚重试次数
         if (result) {

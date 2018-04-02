@@ -62,7 +62,7 @@ public class PasswordTest extends BaseTest {
     * 通过credentialsMatcher 结合jdbcRealm 进行密码验证,并实现一段时间内控制重试次数 ,超过次数拒绝登陆请求
     */
     @Test
-    public void  testRetryCacheWithCredentialsMatcher (){
+    public void  testRetryCacheWithCredentialsMatcher () throws InterruptedException {
         //shiro 默认使用BeanUtils 默认不支持 Enum类型转换,需要自己进行注册Enum的转换器
         BeanUtilsBean.getInstance().getConvertUtils().register(new EnumConverter(), JdbcRealm.SaltStyle.class);
 
@@ -71,6 +71,9 @@ public class PasswordTest extends BaseTest {
         for (int i = 0; i < 6; i++) {
             login("liu", "1122");
         }
+//        Thread.sleep(1000*20);
+
+
         login("liu", "1231");
         Assert.assertTrue(getSubject().isAuthenticated());
     }
