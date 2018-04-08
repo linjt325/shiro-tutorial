@@ -49,14 +49,14 @@ public class BaseTest {
         //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        try {
+//        try {
             //4、登录，即身份验证
             subject.login(token);
             System.out.println(subject.getPrincipals());
-        } catch (AuthenticationException e) {
-            //5、身份验证失败
-            e.printStackTrace();
-        }
+//        } catch (AuthenticationException e) {
+//            //5、身份验证失败
+//            e.printStackTrace();
+//        }
 
     }
     /**
@@ -66,13 +66,13 @@ public class BaseTest {
 
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        try {
+//        try {
             //4、登录，即身份验证
             subject.login(token);
-        } catch (AuthenticationException e) {
-            //5、身份验证失败
-            e.printStackTrace();
-        }
+//        } catch (AuthenticationException e) {
+//            //5、身份验证失败
+//            e.printStackTrace();
+//        }
 
     }
 

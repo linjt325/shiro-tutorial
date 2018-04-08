@@ -25,7 +25,7 @@
         <resources>
             <heap unit="entries">2000</heap>
             <offheap unit="MB">500</offheap>
-            <disk persistent="true" unit="MB">640</disk>
+            <disk persistent="false" unit="MB">640</disk>
         </resources>
     </cache>
     <!--缓存配置 -->
