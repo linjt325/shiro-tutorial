@@ -7,6 +7,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class SubjectController {
 
 
-    @RequestMapping(value={"index",""})
+    @RequestMapping(value = {"index", ""})
     @ResponseBody
     public ModelAndView index() {
         ModelAndView model = new ModelAndView("index");
@@ -66,22 +67,30 @@ public class SubjectController {
 
     @RequestMapping("isAuthenticated")
     @ResponseBody
-    public ModelAndView isAuthenticated(){
+    public ModelAndView isAuthenticated() {
 
         if (SecurityUtils.getSubject().isAuthenticated()) {
             return new ModelAndView("authenticated");
         }
         return null;
     }
+
     @RequestMapping("isPermitted")
     @ResponseBody
-    public ModelAndView isPermitted(){
+    public ModelAndView isPermitted() {
 
         if (SecurityUtils.getSubject().isPermitted("user:create")) {
             return new ModelAndView("permitted");
-        }else{
+        } else {
             return new ModelAndView("noPermission");
         }
     }
 
+    @GetMapping("hasRole")
+    public ModelAndView hasRole(){
+        if (SecurityUtils.getSubject().hasRole("admin")) {
+            return new ModelAndView("hasRole");
+        }
+            return new ModelAndView("noRole");
+    }
 }

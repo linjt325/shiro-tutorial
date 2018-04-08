@@ -34,8 +34,10 @@ public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
 
     public static void close(){
 //        passwordRetryCache.close();
-        cacheManager.getStatus();
-        cacheManager.close();
+        if(cacheManager != null ){
+            cacheManager.getStatus();
+            cacheManager.close();
+        }
     }
     public RetryLimitCredentialsMatcher() {
         super();
