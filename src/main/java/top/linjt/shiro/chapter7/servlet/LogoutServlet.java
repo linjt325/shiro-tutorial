@@ -17,7 +17,7 @@ public class LogoutServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SecurityUtils.getSubject().logout();
 
-        req.getRequestDispatcher("/Html/login.jsp").forward(req, resp);
+//        req.getRequestDispatcher("/Html/login.jsp").forward(req, resp);
 
     }
 }
