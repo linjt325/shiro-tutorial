@@ -2,7 +2,6 @@ package top.linjt.shiro.chapter4;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
 import org.apache.shiro.authc.pam.ModularRealmAuthenticator;

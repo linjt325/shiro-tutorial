@@ -1,6 +1,5 @@
 package top.linjt.shiro.chapter6.realm;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -11,7 +10,6 @@ import top.linjt.shiro.chapter6.pojo.User;
 import top.linjt.shiro.chapter6.service.UserService;
 import top.linjt.shiro.chapter6.service.impl.UserServiceImpl;
 
-import javax.security.auth.login.AccountNotFoundException;
 import java.util.Objects;
 import java.util.Set;
 

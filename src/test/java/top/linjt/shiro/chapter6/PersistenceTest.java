@@ -1,13 +1,10 @@
 package top.linjt.shiro.chapter6;
 
-import org.apache.shiro.crypto.hash.*;
-import org.apache.shiro.subject.Subject;
+import org.apache.shiro.crypto.hash.DefaultHashService;
+import org.apache.shiro.crypto.hash.Hash;
+import org.apache.shiro.crypto.hash.HashRequest;
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.jdbc.core.JdbcTemplate;
-import top.linjt.shiro.chapter6.dao.UserDao;
-import top.linjt.shiro.chapter6.dao.impl.PermissionDaoImpl;
-import top.linjt.shiro.chapter6.dao.impl.UserDaoImpl;
 import top.linjt.shiro.chapter6.pojo.Permission;
 import top.linjt.shiro.chapter6.pojo.User;
 import top.linjt.shiro.chapter6.util.JdbcUtil;

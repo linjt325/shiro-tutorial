@@ -4,7 +4,6 @@ import org.apache.shiro.codec.Base64;
 import org.apache.shiro.codec.Hex;
 import org.apache.shiro.crypto.AesCipherService;
 import org.apache.shiro.crypto.hash.*;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;

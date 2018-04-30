@@ -1,6 +1,5 @@
 package top.linjt.shiro.chapter6.util;
 
-import org.apache.shiro.codec.Hex;
 import org.apache.shiro.crypto.hash.DefaultHashService;
 import org.apache.shiro.crypto.hash.HashRequest;
 import org.apache.shiro.crypto.hash.HashService;

@@ -1,6 +1,5 @@
 package top.linjt.shiro.chapter2.realm;
 
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.realm.Realm;
 

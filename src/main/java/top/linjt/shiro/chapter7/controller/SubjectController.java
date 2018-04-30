@@ -3,10 +3,7 @@ package top.linjt.shiro.chapter7.controller;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 
 @Controller
 @RequestMapping("chapter7")
@@ -48,14 +45,15 @@ public class SubjectController {
     }
 
     /*
-    提交登陆用户密码表单 post ; 验证工作都交给shiro的filter做 因此不需要获取到用户密码 ,从req中获取报错信息即可 , 属性名通过ini配置文件指定
+    提交登陆用户密码表单 post ; 验证工作都交给shiro的filter做 因此不需要获取到用户密码 ,
+    当登陆出错,才会将请求指派到该controller ,
+    从req中获取报错信息即可 , 属性名通过ini配置文件指定
      */
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public void login(HttpServletRequest req, HttpServletResponse resp) {
+    public ModelAndView login(HttpServletRequest req, HttpServletResponse resp) {
 
         String shiroLoginFailure = (String) req.getAttribute("shiroLoginFailure");
         String error = null;
-
 
         if (UsernamePasswordToken.class.getName().equals(shiroLoginFailure)) {
             error = "用户名/密码错误";
@@ -65,9 +63,31 @@ public class SubjectController {
             error = "其他错误: "+shiroLoginFailure;
         }
 
+        ModelAndView view = new ModelAndView("login");
         if (error != null) {
-            req.setAttribute("error", error);
+//            req.setAttribute("error", error);
+            view.addObject("error", error);
+            System.out.println(req.getAttribute("error"));
         }
+        return view;
+//        return  login(error );
+//        req.getRequestDispatcher("login").forward(, );
+//        try {
+//            req.getRequestDispatcher("login").forward(req, resp);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+//        return null;
+//        return new ModelAndView("login").addObject("error", error);
+//        try {
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
 //        Subject subject = SecurityUtils.getSubject();
 //        try {
 //            subject.login(new UsernamePasswordToken(username, password));
@@ -93,6 +113,7 @@ public class SubjectController {
 //            params = new HashMap<>();
 //            params.put("error", error);
 ////            return new ModelAndView("login").addObject("error", error);
+
 //        }
 //        WebUtils.issueRedirect(req, resp,url
 //                ,params,true);

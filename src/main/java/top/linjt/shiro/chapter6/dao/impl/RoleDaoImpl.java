@@ -1,15 +1,14 @@
 package top.linjt.shiro.chapter6.dao.impl;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import top.linjt.shiro.chapter6.dao.RoleDao;
 import top.linjt.shiro.chapter6.pojo.Role;
 import top.linjt.shiro.chapter6.util.JdbcUtil;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
 public class RoleDaoImpl implements RoleDao {

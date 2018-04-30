@@ -1,12 +1,7 @@
 package top.linjt.shiro.chapter6;
 
-import org.apache.shiro.SecurityUtils;
-import org.ehcache.CacheManager;
-import org.ehcache.config.builders.CacheManagerBuilder;
-import org.ehcache.xml.XmlConfiguration;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import top.linjt.shiro.chapter6.credentials.RetryLimitCredentialsMatcher;
 import top.linjt.shiro.chapter6.pojo.Permission;

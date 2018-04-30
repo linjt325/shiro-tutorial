@@ -1,11 +1,8 @@
 package top.linjt.test;
 
 import org.apache.shiro.codec.Base64;
-import org.apache.shiro.codec.CodecSupport;
 import org.apache.shiro.codec.Hex;
-import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.*;
-import org.apache.shiro.util.SimpleByteSource;
 
 import java.io.UnsupportedEncodingException;
 

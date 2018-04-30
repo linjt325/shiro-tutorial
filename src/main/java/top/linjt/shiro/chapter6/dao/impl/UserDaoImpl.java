@@ -2,18 +2,16 @@ package top.linjt.shiro.chapter6.dao.impl;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import top.linjt.shiro.chapter6.dao.UserDao;
-import top.linjt.shiro.chapter6.pojo.Role;
 import top.linjt.shiro.chapter6.pojo.User;
 import top.linjt.shiro.chapter6.util.JdbcUtil;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class UserDaoImpl implements UserDao {
     private JdbcTemplate jdbcTemplate;
