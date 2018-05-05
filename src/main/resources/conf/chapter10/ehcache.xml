@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ehcache  name="es">
-    <diskStore path="java.io.tmpdir"/>
-    <!-- 登录记录缓存 锁定10分钟 -->
-    <cache name="passwordRetryCache"
-           maxEntriesLocalHeap="2000"
-           eternal="false"
-           timeToIdleSeconds="3600"
-           timeToLiveSeconds="0"
-           overflowToDisk="false"
-           statistics="true">
-    </cache>
+<ehcache name="es" >
 
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            overflowToDisk="true"
+            timeToIdleSeconds="20"
+            timeToLiveSeconds="60">
+    </defaultCache>
     <cache name="shiro-activeSessionCache"
            maxEntriesLocalHeap="10000"
            overflowToDisk="false"
@@ -19,4 +18,6 @@
            timeToLiveSeconds="0"
            timeToIdleSeconds="0"
            statistics="true"/>
+
+
 </ehcache>

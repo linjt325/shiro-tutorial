@@ -60,7 +60,7 @@ public class SubjectController {
         } else if (IncorrectCredentialsException.class.getName().equals(shiroLoginFailure)) {
             error = "用户名/密码错误";
         } else if (AuthenticationException.class.getName().equals(shiroLoginFailure)) {
-            error = "其他错误: "+shiroLoginFailure;
+            error = "其他错误: " + shiroLoginFailure;
         }
 
         ModelAndView view = new ModelAndView("login");

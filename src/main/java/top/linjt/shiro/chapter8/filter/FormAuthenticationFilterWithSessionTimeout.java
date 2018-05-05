@@ -22,6 +22,7 @@ public class FormAuthenticationFilterWithSessionTimeout extends FormAuthenticati
 
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
+        //登录成功后设置session的超时时间为10s, 也可以通过sessionListener  进行配置 或者在配置文件中指定全局的超时时间
         subject.getSession().setTimeout(10000);
         return super.onLoginSuccess(token, subject, request, response);
     }

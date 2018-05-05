@@ -7,7 +7,11 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-<!--1.1-->
+    <error-page>
+        <exception-type>org.apache.shiro.session.InvalidSessionException</exception-type>
+        <location>/Html/logout.jsp</location>
+    </error-page>
+    <!--1.1-->
 <!--    <filter>
         <filter-name>iniShiroFilter</filter-name>
         <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
@@ -34,7 +38,9 @@
     <!--指定配置文件路径,如果没有配置 默认为WEB-INF/shiro.ini-->
     <context-param>
         <param-name>shiroConfigLocations</param-name>
-        <param-value>classpath:conf/chapter7/shiro.ini</param-value>
+        <param-value>classpath:conf/chapter10/shiro.ini</param-value>
+        <!--<param-value>classpath:conf/chapter7/shiro.ini</param-value>-->
+        <!--<param-value>classpath:conf/chapter8/shiro.ini</param-value>-->
     </context-param>
 
     <filter>
@@ -49,6 +55,10 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
+    <!-- 如果采用ServletContainerSessionManager进行会话管理,可以在web.xml中进行配置 -->
+    <!--<session-config>-->
+        <!--<session-timeout>30</session-timeout>-->
+    <!--</session-config>-->
 
     <servlet>
         <servlet-name>shrio</servlet-name>
