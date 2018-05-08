@@ -39,6 +39,14 @@ public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
             cacheManager.close();
         }
     }
+
+    public RetryLimitCredentialsMatcher(CacheManager cacheManager) {
+
+        super();
+        this.cacheManager = cacheManager;
+        passwordRetryCache = (Ehcache) cacheManager.getCache("passwordRetryCache", String.class, AtomicInteger.class);
+    }
+
     public RetryLimitCredentialsMatcher() {
         super();
         cacheManager = CacheManagerBuilder

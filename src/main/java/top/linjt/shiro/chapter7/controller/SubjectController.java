@@ -1,22 +1,17 @@
 package top.linjt.shiro.chapter7.controller;
 
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.web.util.WebUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("chapter7")
@@ -59,6 +54,8 @@ public class SubjectController {
             error = "用户名/密码错误";
         } else if (IncorrectCredentialsException.class.getName().equals(shiroLoginFailure)) {
             error = "用户名/密码错误";
+        } else if (ExcessiveAttemptsException.class.getName().equals(shiroLoginFailure)) {
+            error = "尝试次数过多,请稍后重试";
         } else if (AuthenticationException.class.getName().equals(shiroLoginFailure)) {
             error = "其他错误: " + shiroLoginFailure;
         }

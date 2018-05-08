@@ -17,6 +17,8 @@
     <div>
     <label>密码</label>
         <input type="password" name="password" id="password" placeholder="请输入密码">
+    <label>下次自动登录：</label>
+        <input type="checkbox" name="rememberMe" value="true"><br/>
     </div>
     <button type="submit">提交</button>
 </form>

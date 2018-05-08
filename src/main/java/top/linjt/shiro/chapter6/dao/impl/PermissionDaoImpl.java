@@ -1,6 +1,7 @@
 package top.linjt.shiro.chapter6.dao.impl;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 import top.linjt.shiro.chapter6.dao.PermissionDao;
 import top.linjt.shiro.chapter6.pojo.Permission;
 import top.linjt.shiro.chapter6.util.JdbcUtil;
@@ -11,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Repository
 public class PermissionDaoImpl implements PermissionDao{
 
     private DataSource dataSource;

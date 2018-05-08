@@ -1,10 +1,12 @@
 package top.linjt.shiro.chapter6.service.impl;
 
+import org.springframework.stereotype.Service;
 import top.linjt.shiro.chapter6.dao.RoleDao;
 import top.linjt.shiro.chapter6.dao.impl.RoleDaoImpl;
 import top.linjt.shiro.chapter6.pojo.Role;
 import top.linjt.shiro.chapter6.service.RoleService;
 
+@Service
 public class RoleServiceImpl implements RoleService {
 
     private RoleDao roleDao;

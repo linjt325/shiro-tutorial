@@ -11,6 +11,14 @@
         <exception-type>org.apache.shiro.session.InvalidSessionException</exception-type>
         <location>/Html/logout.jsp</location>
     </error-page>
+
+
+    <!--如果采用ServletContainerSessionManager进行会话管理,可以在web.xml中进行配置 -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!--不使用spring-->
     <!--1.1-->
 <!--    <filter>
         <filter-name>iniShiroFilter</filter-name>
@@ -27,47 +35,71 @@
 -->
 <!--1.2-->
     <!--初始化 environment 获取 context-Param-->
-    <listener>
-        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
-    </listener>
-    <!--指定webEnvironment 类-->
-    <context-param>
-        <param-name>shiroEnvironmentClass</param-name>
-        <param-value>org.apache.shiro.web.env.IniWebEnvironment</param-value>
-    </context-param>
-    <!--指定配置文件路径,如果没有配置 默认为WEB-INF/shiro.ini-->
-    <context-param>
-        <param-name>shiroConfigLocations</param-name>
-        <param-value>classpath:conf/chapter10/shiro.ini</param-value>
-        <!--<param-value>classpath:conf/chapter7/shiro.ini</param-value>-->
-        <!--<param-value>classpath:conf/chapter8/shiro.ini</param-value>-->
-    </context-param>
+    <!--<listener>-->
+        <!--<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>-->
+    <!--</listener>-->
+    <!--&lt;!&ndash;指定webEnvironment 类&ndash;&gt;-->
+    <!--<context-param>-->
+        <!--<param-name>shiroEnvironmentClass</param-name>-->
+        <!--<param-value>org.apache.shiro.web.env.IniWebEnvironment</param-value>-->
+    <!--</context-param>-->
+    <!--&lt;!&ndash;指定配置文件路径,如果没有配置 默认为WEB-INF/shiro.ini&ndash;&gt;-->
+    <!--<context-param>-->
+        <!--<param-name>shiroConfigLocations</param-name>-->
+        <!--<param-value>classpath:conf/chapter12/shiro.xml</param-value>-->
+        <!--&lt;!&ndash;<param-value>classpath:conf/chapter10/shiro.ini</param-value>&ndash;&gt;-->
+        <!--&lt;!&ndash;<param-value>classpath:conf/chapter7/shiro.ini</param-value>&ndash;&gt;-->
+        <!--&lt;!&ndash;<param-value>classpath:conf/chapter8/shiro.ini</param-value>&ndash;&gt;-->
+    <!--</context-param>-->
 
+    <!--不使用spring-->
+    <!--<filter>-->
+        <!--<filter-name>ShiroFilter</filter-name>-->
+        <!--<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>ShiroFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+        <!--<dispatcher>REQUEST</dispatcher>-->
+        <!--<dispatcher>FORWARD</dispatcher>-->
+        <!--<dispatcher>INCLUDE</dispatcher>-->
+        <!--<dispatcher>ERROR</dispatcher>-->
+    <!--</filter-mapping>-->
+
+
+<!--使用spring来管理shiro-->
+
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>classpath*:conf/spring*.xml</param-value>-->
+    <!--</context-param>-->
+
+
+    <!--与spring结合使用,代理filter会根据filtername去Spring容器中查找对应的bean 并且把请求交给它处理-->
     <filter>
-        <filter-name>ShiroFilter</filter-name>
-        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>ShiroFilter</filter-name>
+        <filter-name>shiroFilter</filter-name>
         <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-        <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    <!-- 如果采用ServletContainerSessionManager进行会话管理,可以在web.xml中进行配置 -->
-    <!--<session-config>-->
-        <!--<session-timeout>30</session-timeout>-->
-    <!--</session-config>-->
-
     <servlet>
         <servlet-name>shrio</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                <!--classpath*:conf/chapter*/*.xml,-->
-                classpath*:spring*.xml
+                classpath*:spring*.xml,
+                classpath:conf/chapter13/shiro.xml,
+                <!--classpath:conf/chapter12/shiro.xml,-->
             </param-value>
         </init-param>
     </servlet>

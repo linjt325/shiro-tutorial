@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.stereotype.Repository;
 import top.linjt.shiro.chapter6.dao.UserDao;
 import top.linjt.shiro.chapter6.pojo.User;
 import top.linjt.shiro.chapter6.util.JdbcUtil;
@@ -12,8 +13,9 @@ import java.sql.PreparedStatement;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+@Repository
 public class UserDaoImpl implements UserDao {
+
     private JdbcTemplate jdbcTemplate;
 
     public UserDaoImpl() {

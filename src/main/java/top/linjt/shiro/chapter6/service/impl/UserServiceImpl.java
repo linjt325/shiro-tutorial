@@ -1,5 +1,6 @@
 package top.linjt.shiro.chapter6.service.impl;
 
+import org.springframework.stereotype.Service;
 import top.linjt.shiro.chapter6.dao.UserDao;
 import top.linjt.shiro.chapter6.dao.impl.UserDaoImpl;
 import top.linjt.shiro.chapter6.pojo.User;
@@ -8,6 +9,7 @@ import top.linjt.shiro.chapter6.util.EncryptPassword;
 
 import java.util.Set;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
